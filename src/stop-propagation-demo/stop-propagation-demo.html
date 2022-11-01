@@ -1,0 +1,10 @@
+<template>
+  <require from="./child-component"></require>
+  <div click.capture="onParentClick()">
+    <child-component
+      view.ref="childComponentView"
+      element.ref="childComponentElement"
+      controller.ref="childComponentController">
+    </child-component>
+  </div>
+</template>

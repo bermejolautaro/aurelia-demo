@@ -1,0 +1,86 @@
+<template>
+  <div class="card w-100">
+    <div class="card-body">
+      <h5 class="card-title">${title}</h5>
+      <div class="mb-3">
+        <div>
+          Primitive value without bindable: ${primitiveValueWithoutBindable}
+        </div>
+        <div>
+          Primitive value with bindable: ${primitiveValueWithBindable}
+        </div>
+        <div>
+          Reference value with bindable: ${referenceValueWithoutBindable.age} - ${referenceValueWithoutBindable.name}
+        </div>
+        <div>
+          Reference value with bindable: ${referenceValueWithBindable.age} - ${referenceValueWithBindable.name}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-12">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Primitive Value"
+                element.ref="textInput">
+              <div class="input-group-append">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  click.delegate="onClickChangePrimitiveValue(textInput)">
+                  Change value
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Age Value"
+              element.ref="ageInput">
+          </div>
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Name Value"
+              element.ref="nameInput">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-6">
+          <button
+            class="btn btn-secondary h-100 d-flex align-items-center justify-content-center"
+            type="button"
+            click.delegate="onClickChangeReferenceValue(ageInput, nameInput)">
+            Change value without creating a new instance
+          </button>
+        </div>
+
+        <div class="col-md-6">
+          <buttons
+            class="btn btn-secondary h-100 d-flex align-items-center justify-content-center"
+            type="button"
+            click.delegate="onClickChangeReferenceValue2(ageInput, nameInput)">
+            Change value creating a new instance
+          </buttons>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <button click.delegate="printNumberValue()">click</button>
+</template>

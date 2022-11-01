@@ -1,0 +1,60 @@
+<template>
+  <require from="./child-component"></require>
+
+  <div style="padding: 2em">
+
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title text-center">Parent component</h5>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="col-form-label">Primitive value in parent component with one-way binding</label>
+            <input class="form-control" type="text" readonly value="${primitiveValueOneWay}">
+            <label class="col-form-label">Reference value in parent component with one-way binding</label>
+            <input
+              class="form-control"
+              type="text"
+              readonly
+              value="${referenceValueOneWay.age} - ${referenceValueOneWay.name}">
+          </div>
+          <div class="col-md-6">
+            <label class="col-form-label">Primitive value in parent component with two-way binding</label>
+            <input class="form-control" type="text" readonly value="${primitiveValueTwoWay}">
+            <label class="col-form-label">Reference value in parent component with two-way binding</label>
+            <input
+              class="form-control"
+              type="text"
+              readonly
+              value="${referenceValueTwoWay.age} - ${referenceValueTwoWay.name}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <child-component
+              title="One way binding with child component"
+              primitive-value-without-bindable.one-way="primitiveValueOneWay"
+              primitive-value-with-bindable.one-way="primitiveValueOneWay"
+              reference-value-without-bindable.one-way="referenceValueOneWay"
+              reference-value-with-bindable.one-way="referenceValueOneWay"
+              number-value="referralId">
+            </child-component>
+          </div>
+          <div class="col-md-6">
+            <child-component
+              title="Two way binding with child component"
+              primitive-value-without-bindable.two-way="primitiveValueTwoWay"
+              primitive-value-with-bindable.two-way="primitiveValueTwoWay"
+              reference-value-without-bindable.two-way="referenceValueTwoWay"
+              reference-value-with-bindable.two-way="referenceValueTwoWay">
+            </child-component>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</template>

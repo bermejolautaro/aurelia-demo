@@ -1,0 +1,127 @@
+<template>
+  <require from="./observable-demo.scss"></require>
+
+  <div style="padding: 2em">
+
+    <div style="padding-bottom: 2em">
+      <div class="title">Primitive value without observable decorator</div>
+      <input
+        type="text"
+        class="text-input"
+        input.delegate="onChangePrimitiveValueWithoutObservableDecorator($event)"
+        value.two-way="primitiveValueWithoutObservableDecorator">
+      <div class="block">
+        <span class="subtitle">VALUE: </span>${primitiveValueWithoutObservableDecorator}
+      </div>
+
+      <div class="block">
+        <span class="subtitle">HISTORY</span>
+        <div repeat.for="value of primitiveValueWithoutObservableDecoratorHistory">
+          ${value}
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 2em">
+      <div class="title">Primitive value with observable decorator</div>
+      <input
+        type="text"
+        class="text-input"
+        input.delegate="onChangePrimitiveValueWithObservableDecorator($event)"
+        value.two-way="primitiveValueWithObservableDecorator">
+      <div class="block">
+        <span class="subtitle">VALUE: </span>${primitiveValueWithObservableDecorator}
+      </div>
+      <div class="block">
+        <span class="subtitle">HISTORY:</span>
+        <div repeat.for="value of primitiveValueWithObservableDecoratorHistory">
+          ${value}
+        </div>
+      </div>
+      <div class="block">
+        <span class="subtitle">HISTORY FROM OBSERVABLE:</span>
+        <div repeat.for="value of primitiveValueWithObservableDecoratorHistoryFromChanged">
+          ${value}
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 2em">
+      <div class="title">Reference value without observable decorator</div>
+      <div>
+        <span>Age: </span>
+        <input
+          type="text"
+          class="text-input"
+          input.delegate="onChangeReferenceValueAgeWithoutObservableDecorator($event)"
+          value.two-way="referenceValueWithoutObservableDecorator.age">
+      </div>
+      <div>
+        <span>Name: </span>
+        <input
+          type="text"
+          class="text-input"
+          input.delegate="onChangeReferenceValueNameWithoutObservableDecorator($event)"
+          value.two-way="referenceValueWithoutObservableDecorator.name">
+      </div>
+      <div class="block">
+        <div>
+          <span class="subtitle">Age: </span>${referenceValueWithoutObservableDecorator.age}
+        </div>
+        <div>
+          <span class="subtitle">Name: </span>${referenceValueWithoutObservableDecorator.name}
+        </div>
+      </div>
+      <div class="block">
+        <span class="subtitle">HISTORY:</span>
+        <div repeat.for="value of referenceValueWithoutObservableDecoratorHistory">
+          ${value.age} - ${value.name}
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-bottom: 2em">
+      <div class="title">Reference value with observable decorator</div>
+      <div>
+        <span>Age: </span>
+        <input
+          type="text"
+          class="text-input"
+          input.delegate="onChangeReferenceValueAgeWithObservableDecorator($event)"
+          value.two-way="referenceValueWithObservableDecorator.age">
+      </div>
+      <div>
+        <span>Name: </span>
+        <input
+          type="text"
+          class="text-input"
+          input.delegate="onChangeReferenceValueNameWithObservableDecorator($event)"
+          value.two-way="referenceValueWithObservableDecorator.name">
+      </div>
+      <div>
+        <button click.delegate="onClickCreateNewInstance()">Create new instance</button>
+      </div>
+      <div class="block">
+        <div>
+          <span class="subtitle">Age: </span>${referenceValueWithObservableDecorator.age}
+        </div>
+        <div>
+          <span class="subtitle">Name: </span>${referenceValueWithObservableDecorator.name}
+        </div>
+      </div>
+      <div class="block">
+        <span class="subtitle">HISTORY:</span>
+        <div repeat.for="value of referenceValueWithObservableDecoratorHistory">
+          ${value.age} - ${value.name}
+        </div>
+      </div>
+      <div class="block">
+        <span class="subtitle">HISTORY FROM OBSERVABLE:</span>
+        <div repeat.for="value of referenceValueWithObservableDecoratorHistoryFromChanged">
+          ${value.age} - ${value.name}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>

@@ -1,0 +1,81 @@
+<template>
+  <require from="../json"></require>
+  <div>
+    <button click.delegate="debug()">DEBUG</button>
+  </div>
+  <ng-container>
+    <!-- Extenal Enrollment Checkbox -->
+    <input type="checkbox" checked.bind="form.externalEnrollment">External Enrollment
+  
+    <div if.bind="form.externalEnrollment">
+      <!-- Common -->
+      <div>
+        <!-- Active Checkbox -->
+        <input type="checkbox" checked.bind="form.active">Active
+  
+        <!-- Collaborator Login Input -->
+        <input type="text" placeholder="Login" value.bind="form.login">
+  
+        <!-- External System Dropdown -->
+        <ng-container>
+          <select value.bind="form.externalSystem">
+            <option model.bind="null">-</option>
+            <option value="externalSystem1">External System 1</option>
+            <option value="externalSystem2">External System 2</option>
+            <option value="externalSystem3">External System 3</option>
+          </select>
+        </ng-container>
+  
+        <!-- Digital Roles Dropdown -->
+        <ng-container>
+          <select value.bind="form.digitalRole">
+            <option model.bind="null">-</option>
+            <option value="digitalRole1">Digital Role 1</option>
+            <option value="digitalRole2">Digital Role 2</option>
+            <option value="digitalRole3">Digital Role 3</option>
+          </select>
+        </ng-container>
+  
+        <!-- Digital Credentials Dropdown -->
+        <ng-container>
+          <select value.bind="form.digitalCredential">
+            <option model.bind="null">-</option>
+            <option value="digitalCredential1">Digital Crendential 1</option>
+            <option value="digitalCredential2">Digital Crendential 2</option>
+            <option value="digitalCredential3">Digital Crendential 3</option>
+          </select>
+        </ng-container>
+  
+        <!-- Category Dropdown -->
+        <ng-container>
+          <select value.bind="form.category">
+            <option value="Standard">Standard</option>
+            <option value="Master">Master</option>
+            <option value="Associate">Associate</option>
+          </select>
+        </ng-container>
+  
+      </div>
+    </div>
+  
+    <!-- Master Category -->
+    <div if.bind="form.category === 'Master'">
+      <input type="text" value.bind="form.authorizerName" placeholder="Authorizer Name">
+      <input type="text" value.bind="form.phoneNumber" placeholder="Phone Number">
+      <input type="text" value.bind="form.emailAddress" placeholder="Email Address">
+      <input type="text" value.bind="form.authorizationDate" placeholder="Authorization Date" readonly>
+      <input type="text" value.bind="form.masterAuthorizationCode" placeholder="Authorization Code" readonly>
+      <button type="button">Generate Authorization Code</button>
+    </div>
+  
+    <!-- Associate Category -->
+    <div if.bind="form.category === 'Associate'">
+      <input type="text" value.bind="form.associateAuthorizationCode" placeholder="Authorization Code">
+    </div>
+  </ng-container>
+  
+  <div>
+    <button click.delegate="save()">Save</button>
+  </div>
+  
+</template>

@@ -1,0 +1,8 @@
+<template>
+  <input type="text" input.delegate="onInput($event)">
+
+  <div>Child component events</div>
+  <div repeat.for="event of isValidEvents">
+    isValid: ${event}
+  </div>
+</template>

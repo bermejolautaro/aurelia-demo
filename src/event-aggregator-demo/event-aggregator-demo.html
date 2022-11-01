@@ -1,0 +1,25 @@
+<template>
+  <require from="./child-component"></require>
+
+  <div class="container p-5 ">
+    <div class="row">
+      <div class="col-md-6">
+        <child-component></child-component>
+      </div>
+      <div class="col-md-6">
+        <child-component
+          listen-for-events.one-way="true">
+        </child-component>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div>Parent components events</div>
+        <div class="col-md-12" repeat.for="event of isValidEvents">
+          isValid: ${event}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</template>

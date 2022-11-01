@@ -1,0 +1,12 @@
+<template>
+  <require from="./child-component"></require>
+
+  <button click.delegate="showChild = !showChild">Show/Hide Child</button>
+
+  <div if.bind="showChild">
+    Child Component
+    <child-component
+      name.bind="name">
+    </child-component>
+  </div>
+</template>
